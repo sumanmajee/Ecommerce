@@ -1,11 +1,10 @@
-import express from "express"
-const app = express()
-const port = process.env.PORT || 3000
+import mongoose from "mongoose"
+import { DB_NAME } from "./constants.js"
+import connectDB from "./db/database.js"
+import dotenv from "dotenv"
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
+dotenv.config({
+    path: './.env'
 })
 
-app.listen(port, () => {
-  console.log(`Serving on port: ${port}`)
-})
+connectDB()
